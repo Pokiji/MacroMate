@@ -1,5 +1,6 @@
 import './landing.css'
-import './font/inter.css'
+import './assests/inter.css'
+import './assests/fontawesome.css'
 
 function Landing (){
     return(
@@ -16,7 +17,7 @@ function Landing (){
                 and build healthier habits—one meal at a time.
                 </p>
             </div>
-            <button className='button'type="button">Get started</button>
+            <button className='button'type="button">Get started <i className="fa-solid fa-arrow-right"></i></button>
             </div>
         </>
     )
