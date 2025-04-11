@@ -21,8 +21,8 @@
     "lang":"en-GB",
     "name":"MacroMate",
     "short_name":"MacroMate",
-    "start_url":"https://macromate.xyz",
-    "scope":"https://macromate.xyz",
+    "start_url":"macromate.xyz",
+    "scope":"macromate.xyz",
     "description":"Macro tracker that tracks calories, protien, fat and carbs",
-    "id":"https://macromate.xyz"
+    "id":"macromate.xyz"
  }

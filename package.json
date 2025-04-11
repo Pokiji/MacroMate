@@ -1,6 +1,5 @@
 {
-  "name": "MacroMate",
-  "homepage": "https://pokiji.github.io/MacroMate/",
+  "name": "macromate",
   "private": true,
   "version": "0.0.0",
   "type": "module",
