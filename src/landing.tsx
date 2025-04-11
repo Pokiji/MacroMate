@@ -1,7 +1,6 @@
 import './landing.css'
 import './assests/inter.css'
 import './assests/fontawesome.css'
-import { Link } from 'react-router-dom'; // Import Link from React Router
 
 import phoneImg from './assests/phoneimg.png'; // adjust the path if needed
 function Landing (){
