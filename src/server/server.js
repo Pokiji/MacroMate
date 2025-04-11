@@ -17,15 +17,7 @@ function searchNutritionix(query) {
     request(options, (error, response, body) => {
         if (error) throw new Error(error);
         
-        console.log("Common foods:");
-        body.common.forEach(item => {
-            console.log(item.food_name);
-        });
-
-        console.log("\nBranded foods:");
-        body.branded.forEach(item => {
-            console.log(`${item.brand_name} - ${item.food_name}`);
-        });
+        
     });
 }
 
