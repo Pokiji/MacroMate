@@ -5,7 +5,14 @@ function Home (){
     return(
         <>
             <div>
-                <h1>hello</h1>
+                <div className='nav'>
+
+                </div>
+                <div className='main'>
+                    <div className="container">
+                        
+                    </div>
+                </div>
             </div>
         </>
     )
