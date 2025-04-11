@@ -46,5 +46,3 @@ function searchNutritionix(query, url) {
     });
 }
 
-const naturalLanguageUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients?query=";
-searchNutritionix("sprite", naturalLanguageUrl);
