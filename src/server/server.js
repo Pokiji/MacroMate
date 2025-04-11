@@ -1,42 +1,33 @@
-require('dotenv').config();
-var request = require("request");
+const request = require("request");
 
-const clientID = process.env.FATSECRET_CLIENT_ID;
-const clientSecret = process.env.FATSECRET_CLIENT_SECRET;
-let accessToken = null;
+const APP_ID = process.env.NUTRITIONIX_APP_ID;
+const APP_KEY = process.env.NUTRITIONIX_APP_KEY;
 
-function getNewAccessToken() {
-    var options = {
-        method: 'POST',
-        url: 'https://oauth.fatsecret.com/connect/token',
-        method : 'POST',
-        auth : {
-           user : clientID,
-           password : clientSecret
-        },
-        headers: { 'content-type': 'application/x-www-form-urlencoded'},
-        form: {
-           'grant_type': 'client_credentials',
-           'scope' : 'basic'
+function searchNutritionix(query) {
+    const options = {
+        method: 'GET',
+        url: `https://trackapi.nutritionix.com/v2/search/instant?query=${encodeURIComponent(query)}`,
+        headers: {
+            'x-app-id': APP_ID,
+            'x-app-key': APP_KEY
         },
         json: true
     };
-    
-    request(options, function (error, response, body) {
+
+    request(options, (error, response, body) => {
         if (error) throw new Error(error);
-  
-        accessToken = body.access_token;
-  
-        console.log("New access token:", accessToken);
+        
+        console.log("Common foods:");
+        body.common.forEach(item => {
+            console.log(item.food_name);
+        });
 
-        setTimeout(getNewAccessToken, (body.expires_in - 60) * 1000); 
+        console.log("\nBranded foods:");
+        body.branded.forEach(item => {
+            console.log(`${item.brand_name} - ${item.food_name}`);
+        });
     });
-} 
-
-getNewAccessToken();
-
-function lookUp(name, brand){
-    
 }
 
-
+// Example use
+searchNutritionix("apple kirkland");
