@@ -4,13 +4,13 @@ import './home.css'
 function Home (){
     return(
         <>
-            <div>
+            <div>   
                 <div className='nav'>
-
+                    
                 </div>
                 <div className='main'>
                     <div className="container">
-                        
+
                     </div>
                 </div>
             </div>
