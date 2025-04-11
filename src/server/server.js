@@ -20,7 +20,7 @@ const myLicenseKey = "bV3rEkOKKctj5CzpC9IA3l1pe2nnrQ" +
 "eHl6CjE3NDUwMjA3OTkKODM4ODYwNw" +
 "o4\n";
 
-function searchNutritionix(query) {
+function searchNutritionix(query, url) {
     const options = {
         method: 'GET',
         url: `https://trackapi.nutritionix.com/v2/natural/nutrients?query=${encodeURIComponent(query)}`,
@@ -56,12 +56,11 @@ async function initializeScanbot() {
         containerId: 'barcode-scanner-container', // Add a container in your HTML
         onBarcodeDetected: async (barcode) => {
             console.log("Scanned Barcode:", barcode.text);
-
-            // Fetch nutrition data from Nutritionix API
-            fetchNutritionData(barcode.text);
+            searchNutritionix(barcode.text);
         }
     });
 
     return result;
 }
 
+initializeScanbot();
