@@ -23,7 +23,7 @@ const myLicenseKey = "bV3rEkOKKctj5CzpC9IA3l1pe2nnrQ" +
 function searchNutritionix(query, url) {
     const options = {
         method: 'GET',
-        url: `https://trackapi.nutritionix.com/v2/natural/nutrients?query=${encodeURIComponent(query)}`,
+        url: `${url}${encodeURIComponent(query)}`,
         headers: {
             'x-app-id': APP_ID,
             'x-app-key': APP_KEY
@@ -34,33 +34,17 @@ function searchNutritionix(query, url) {
     request(options, (error, response, body) => {
         if (error) throw new Error(error);
 
-        const food = body.foods[0];
-        console.log("Calories:" + food.nf_calories)
-        console.log("Protein:" + food.nf_protein)
-        console.log("Carbohydrates" + food.nf_total_carbohydrates)
-        console.log("Sugar" + food.sugars)
-    });
-}
-
-searchNutritionix("sprite");
-
-async function initializeScanbot() {
-    const scanbotSDK = await ScanbotSDK.initialize({
-        licenseKey: myLicenseKey
-    });
-
-    console.log("Scanbot SDK initialized successfully!");
-
-    // Start barcode scanning
-    const result = await scanbotSDK.createBarcodeScanner({
-        containerId: 'barcode-scanner-container', // Add a container in your HTML
-        onBarcodeDetected: async (barcode) => {
-            console.log("Scanned Barcode:", barcode.text);
-            searchNutritionix(barcode.text);
+        if (body.foods && body.foods.length > 0) {
+            const food = body.foods[0];
+            console.log("Calories:", food.nf_calories);
+            console.log("Protein:", food.nf_protein);
+            console.log("Carbohydrates:", food.nf_total_carbohydrates);
+            console.log("Sugar:", food.sugars);
+        } else {
+            console.log("No results found.");
         }
     });
-
-    return result;
 }
 
-initializeScanbot();
+const naturalLanguageUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients?query=";
+searchNutritionix("sprite", naturalLanguageUrl);

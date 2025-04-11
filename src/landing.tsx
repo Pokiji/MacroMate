@@ -1,7 +1,7 @@
 import './landing.css'
 import './assests/inter.css'
 import './assests/fontawesome.css'
-
+import './assests/phoneimg.png'
 function Landing (){
     return(
         <>
@@ -10,7 +10,7 @@ function Landing (){
                 <h1>MacroMate</h1>
             </div>
             <div className="img">
-                
+                <img src="assests/phoneimg.png" alt="phonedemo" />
             </div>
             <div className="textWrapper">
                 <h1 className='slogan'><i>Eat Smart Without the Math</i></h1>
