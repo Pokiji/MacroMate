@@ -9,6 +9,9 @@ function Landing (){
             <div className="hader">
                 <h1>MacroMate</h1>
             </div>
+            <div className="img">
+                
+            </div>
             <div className="textWrapper">
                 <h1 className='slogan'><i>Eat Smart Without the Math</i></h1>
                 <p className='subHeader'>

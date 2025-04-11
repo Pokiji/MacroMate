@@ -42,10 +42,11 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #dedede;
   cursor: pointer;
   transition: border-color 0.25s;
   max-width: fit-content;
+  color: #0f0f0f;
 }
 button:hover {
   border-color: #646cff;
