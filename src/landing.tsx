@@ -4,8 +4,10 @@ import './font/inter.css'
 function Landing (){
     return(
         <>
-            <div>
-
+            <div className='main'>
+            <div className="hader">
+                <h1>MacroMate</h1>
+            </div>
             <div className="textWrapper">
                 <h1 className='slogan'><i>Eat Smart Without the Math</i></h1>
                 <p className='subHeader'>
@@ -14,7 +16,7 @@ function Landing (){
                 and build healthier habits—one meal at a time.
                 </p>
             </div>
-            <button type="button">Get started</button>
+            <button className='button'type="button">Get started</button>
             </div>
         </>
     )

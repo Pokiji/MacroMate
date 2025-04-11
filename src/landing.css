@@ -2,12 +2,33 @@
     color: #ffb618;
 }
 
-div{
-    margin-left: 25px;
-}
 .textWrapper{
-    width: 500px;
+    grid-area: texts;
+
 }
+
+.header{
+    grid-area: header;
+}
+.button{
+    grid-area: button;
+}
+
+@media only screen and (min-width: 600px ) {
+    .main{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "header"
+        "text"
+        "button";      
+          padding: 25px 25px;
+    }
+    .textWrapper{
+        width: 50vw;
+    }
+}
+
 
 @media only screen and (max-width: 600px) {
     .textWrapper{
