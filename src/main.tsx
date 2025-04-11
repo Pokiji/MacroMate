@@ -6,7 +6,7 @@ import Landing from './landing.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-
-    <Home />
+    <Landing/>
+    {/* <Home /> */}
   </StrictMode>,
 )
