@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { searchNutritionix } from './server/macros.js'
+import { searchNutritionix } from './server/macros';
 import './home.css';
 
 function AddFood() {
     const [userInput, setUserInput] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault(); // Prevent page refresh
         searchNutritionix(userInput, "https://trackapi.nutritionix.com/v2/natural/nutrients?query=");
     };
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserInput(e.target.value);
     };
 
@@ -44,4 +44,4 @@ function AddFood() {
     )
 }
 
-export default AddFood
+export default AddFood;

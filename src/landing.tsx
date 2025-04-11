@@ -1,8 +1,9 @@
 import './landing.css'
 import './assests/inter.css'
 import './assests/fontawesome.css'
+import { Link } from 'react-router-dom'; // Import Link from React Router
+
 import phoneImg from './assests/phoneimg.png'; // adjust the path if needed
-import logo from './assests/MacroMateMain.png'
 function Landing (){
     return(
         <>
@@ -21,8 +22,9 @@ function Landing (){
                     and build healthier habits—one meal at a time.
                     </p>
                 </div>
-                <button className='button'type="button">Get started <i className="fa-solid fa-arrow-right"></i></button>
-
+                    <button className='button' type="button">
+                        Get started <i className="fa-solid fa-arrow-right"></i>
+                    </button>
             </div>
         </>
     )

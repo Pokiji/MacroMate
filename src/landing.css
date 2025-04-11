@@ -10,7 +10,6 @@
 
 .textWrapper{
     grid-area: texts;
-
 }
 
 .header{
@@ -23,15 +22,15 @@
 .img{
     grid-area: img;
 }
-@media only screen and (min-width: 600px ) {
+
+@media only screen and (min-width: 600px) {
     .main{
         display: grid;
         grid-template-areas: 
           "header img"
           "texts img"
-          "button img" 
-          ;  
-        padding: 25px ;
+          "button img";  
+        padding: 25px;
     }
     .textWrapper{
         width: 50vw;
@@ -40,15 +39,36 @@
     .img{
         padding-left: 10vw;
     }
-
-  
-
-  
 }
 
-
-@media only screen and (max-width: 600px) {
-    .textWrapper{
-        width: 200px;
+@media only screen and (max-width: 599px) {
+    .main {
+        justify-items: center;
+        align-items: center;
+        display: grid;
+        grid-template-areas: 
+          "header"
+          "img"
+          "texts"
+          "button";
     }
-  }
+    .textWrapper {
+        width: 90vw;
+        text-align: center;
+    }
+
+    .img {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .button {
+        text-align: center;
+        margin-top: 15px;
+    }
+}
+
+.link-button {
+    display: inline-block;
+    text-decoration: none; /* optional: removes link underline if any */
+}
