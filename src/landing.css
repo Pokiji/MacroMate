@@ -1,3 +1,16 @@
 .slogan{
     color: #ffb618;
 }
+
+div{
+    margin-left: 25px;
+}
+.textWrapper{
+    width: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+    .textWrapper{
+        width: 200px;
+    }
+  }
