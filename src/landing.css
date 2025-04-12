@@ -35,9 +35,37 @@
     .textWrapper{
         width: 50vw;
     }
-
+    p{
+        font-size: 1.5rem;
+    }
+    h1{
+        font-size: 3rem;
+    }
+    .name{
+        font-size: 6rem;
+    }
     .img{
         padding-left: 10vw;
+    }
+
+    button {
+        height: auto;
+        width: auto;
+        padding: 30px 60px; /* Smaller padding for a smaller button */
+        color: white;
+        font-size: 1rem; /* Smaller font size */
+        font-weight: bold;
+        background: #ffb618; /* Solid color background */
+        border: none; /* Remove border */
+        border-radius: 8px; /* Slightly rounded corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: transform 0.2s ease, background-color 0.2s ease; /* Smooth hover effect */
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background: #e6a514; /* Darker shade on hover */
+        transform: scale(1.05); /* Slightly enlarge on hover */
     }
 }
 

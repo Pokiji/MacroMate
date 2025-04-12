@@ -10,7 +10,7 @@ function Landing() {
         <>
             <div className='main'>
                 <div className="header">
-                    <h1>MacroMate </h1>
+                    <h1 className='name'>MacroMate </h1>
                 </div>
                 <div className="img">
                     <img src={phoneImg} alt="phonedemo" />
@@ -24,7 +24,7 @@ function Landing() {
                     </p>
                 </div>
                 <Link to="/home">
-                    <button className='button' type="button">
+                    <button className='landingbutton' type="button">
                         Get started <i className="fa-solid fa-arrow-right"></i>
                     </button>
                 </Link>
