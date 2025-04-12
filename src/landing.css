@@ -70,6 +70,11 @@
 }
 
 @media only screen and (max-width: 599px) {
+    .landingbutton{
+        padding: 25px 25px;
+        margin-bottom: 10px;
+    }
+    
     .main {
         justify-items: center;
         align-items: center;
