@@ -33,6 +33,51 @@
     padding: 20px;
 }
 
+/* Responsive layout for smaller screens (1x4 layout) */
+@media only screen and (max-width: 599px) {
+    .grid-contain {
+        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-rows: auto auto auto auto; /* 4 rows */
+        gap: 15px; /* Reduce gap between items */
+        padding: 10px;
+    }
+
+    .profile-box,
+    .total-kcal,
+    .saved-foods-box,
+    .info {
+        width: 100%; /* Ensure full width for each item */
+    }
+
+    .profile-box {
+        height: 150px; /* Reduce height for smaller screens */
+    }
+
+    .profile-picture {
+        width: 60px; /* Smaller profile picture */
+        height: 60px;
+        top: 10px; /* Adjust position */
+    }
+
+    .profile-glass {
+        height: 40%; /* Reduce glass height */
+        font-size: 14px; /* Smaller font size */
+        padding: 5px;
+    }
+
+    .total-kcal,
+    .saved-foods-box,
+    .info {
+        padding: 15px; /* Reduce padding for smaller screens */
+        font-size: 14px; /* Adjust font size */
+    }
+
+    .button {
+        font-size: 14px; /* Smaller button text */
+        padding: 8px 16px; /* Adjust button size */
+    }
+}
+
 .profile {
     grid-area: 1 / 1; /* First row, first column */
     text-align: center;
@@ -101,6 +146,7 @@
     font-size: 16px;
     color: #333;
 }
+
 .profile-box {
     grid-area: 1 / 1; /* First row, first column */
     position: relative;
@@ -145,4 +191,3 @@
 .profile-glass strong {
     font-weight: bold; /* Bold text for "Welcome User" */
 }
-
