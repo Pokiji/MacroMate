@@ -1,60 +1,74 @@
-/* Base grid layout for larger screens */
+/* Base 2x2 grid layout for larger screens (600px and up) */
 .grid-contain {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 2 columns */
-    grid-template-rows: auto auto; /* 2 rows */
-    gap: 20px; /* Space between grid items */
+    grid-template-areas:
+        "profile total"
+        "saved info";
+    gap: 20px;
     padding: 20px;
 }
 
-/* Responsive layout for smaller screens (1x4 layout) */
+.profile-box {
+    grid-area: profile;
+}
+
+.total-kcal {
+    grid-area: total;
+}
+
+.saved-foods-box {
+    grid-area: saved;
+}
+
+.info {
+    grid-area: info;
+}
+
+/* Mobile layout: 1x4 (stacked) */
 @media only screen and (max-width: 599px) {
     .grid-contain {
-        grid-template-columns: 1fr; /* Single column layout */
-        grid-template-rows: auto auto auto auto; /* 4 rows */
-        gap: 15px; /* Reduce gap between items */
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "profile"
+            "total"
+            "saved"
+            "info";
+        gap: 15px;
         padding: 10px;
     }
 
-    .profile-box,
-    .total-kcal,
-    .saved-foods-box,
-    .info {
-        width: 100%; /* Ensure full width for each item */
-    }
-
     .profile-box {
-        height: 150px; /* Reduce height for smaller screens */
+        height: 150px;
     }
 
     .profile-picture {
-        width: 60px; /* Smaller profile picture */
+        width: 60px;
         height: 60px;
-        top: 10px; /* Adjust position */
+        top: 10px;
     }
 
     .profile-glass {
-        height: 40%; /* Reduce glass height */
-        font-size: 14px; /* Smaller font size */
+        height: 40%;
+        font-size: 14px;
         padding: 5px;
     }
 
     .total-kcal,
     .saved-foods-box,
     .info {
-        padding: 15px; /* Reduce padding for smaller screens */
-        font-size: 14px; /* Adjust font size */
+        padding: 15px;
+        font-size: 14px;
     }
 
     .button {
-        font-size: 14px; /* Smaller button text */
-        padding: 8px 16px; /* Adjust button size */
+        font-size: 14px;
+        padding: 8px 16px;
     }
 }
 
 /* Profile Box */
 .profile-box {
-    grid-area: 1 / 1; /* First row, first column */
     position: relative;
     width: 100%;
     height: 200px;
@@ -70,9 +84,9 @@
 .profile-picture {
     width: 80px;
     height: 80px;
-    border-radius: 50%; /* Circular profile picture */
-    object-fit: cover; /* Ensures the image fits properly */
-    object-position: center; /* Centers the image within the container */
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
     position: absolute;
     top: 20px;
 }
@@ -81,26 +95,25 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 50%; /* Bottom half of the box */
-    background: rgba(255, 255, 255, 0.2); /* Glass effect */
-    backdrop-filter: blur(10px); /* Frosted glass effect */
+    height: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
     color: black;
     font-size: 16px;
-    font-weight: 300; /* Thin text */
+    font-weight: 300;
     text-align: center;
     padding: 10px;
 }
 
 .profile-glass strong {
-    font-weight: bold; /* Bold text for "Welcome User" */
+    font-weight: bold;
 }
 
 /* Total Nutrition Section */
 .total-kcal {
-    grid-area: 1 / 2; /* First row, second column */
     text-align: center;
     background-color: #f5f5f5;
     padding: 20px;
@@ -116,18 +129,16 @@
 
 /* Saved Foods Section */
 .saved-foods-box {
-    grid-area: 2 / 1; /* Second row, first column */
     background-color: #f5f5f5;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow-y: scroll;
-    max-height: 300px; /* Limit height for scrolling */
+    max-height: 300px;
 }
 
 /* Info Section */
 .info {
-    grid-area: 2 / 2; /* Second row, second column */
     text-align: center;
     background-color: #f5f5f5;
     padding: 20px;

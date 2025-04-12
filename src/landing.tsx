@@ -4,8 +4,36 @@ import './assests/fontawesome.css';
 
 import phoneImg from './assests/phoneimg.png'; // adjust the path if needed
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { useEffect, useState } from 'react';
 
 function Landing() {
+    const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+    const [showInstallButton, setShowInstallButton] = useState(false);
+
+    useEffect(() => {
+        // Listen for the beforeinstallprompt event
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            setDeferredPrompt(e);
+            setShowInstallButton(true); // Show the install button
+        });
+    }, []);
+
+    const handleInstallClick = () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt(); // Show the install prompt
+            deferredPrompt.userChoice.then((choiceResult: any) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                setDeferredPrompt(null); // Clear the deferred prompt
+                setShowInstallButton(false); // Hide the install button
+            });
+        }
+    };
+
     return (
         <>
             <div className='main'>
@@ -28,6 +56,14 @@ function Landing() {
                         Get started <i className="fa-solid fa-arrow-right"></i>
                     </button>
                 </Link>
+                {showInstallButton && (
+                    <button
+                        className="install-button"
+                        onClick={handleInstallClick}
+                    >
+                        Install App
+                    </button>
+                )}
             </div>
         </>
     );

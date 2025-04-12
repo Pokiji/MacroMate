@@ -100,3 +100,19 @@
     display: inline-block;
     text-decoration: none; /* optional: removes link underline if any */
 }
+
+.install-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.install-button:hover {
+    background-color: #45a049;
+}
