@@ -12,7 +12,7 @@ interface SavedFood {
         carbohydrates: number;
         sugar: number;
         sodium: number;
-        fats: number; // Optional field for fats
+        fat: number; // Optional field for fats
     };
 }
 
@@ -31,7 +31,7 @@ const Home: React.FC = () => {
     const totalCalories = savedFoods.reduce((total, food) => total + food.nutrition.calories, 0);
     const totalProtein = savedFoods.reduce((total, food) => total + food.nutrition.protein, 0);
     const totalCarbs = savedFoods.reduce((total, food) => total + food.nutrition.carbohydrates, 0);
-    const totalFats = savedFoods.reduce((total, food) => total + (food.nutrition.fats || 0), 0); // Assuming fats might be missing
+    const totalFats = savedFoods.reduce((total, food) => total + food.nutrition.fat, 0); // Assuming fats might be missing
 
     return (
         <div className="main">
@@ -69,7 +69,7 @@ const Home: React.FC = () => {
                                         <li>Carbs: {food.nutrition.carbohydrates}g</li>
                                         <li>Sugar: {food.nutrition.sugar}g</li>
                                         <li>Sodium: {food.nutrition.sodium}mg</li>
-                                        <li>Fats: {food.nutrition.fats}g</li>
+                                        <li>Fats: {food.nutrition.fat}g</li>
                                     </ul>
                                 </li>
                             ))}

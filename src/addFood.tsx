@@ -20,7 +20,6 @@ interface NutritionData {
     carbohydrates: number;
     sugar: number;
     sodium: number;
-    fat: number;
 }
 
 interface SavedFood {
@@ -90,8 +89,7 @@ export default function AddFood() {
                         protein: existingFood.nutrition.protein + nutritionData.protein,
                         carbohydrates: existingFood.nutrition.carbohydrates + nutritionData.carbohydrates,
                         sugar: existingFood.nutrition.sugar + nutritionData.sugar,
-                        sodium: existingFood.nutrition.sodium + nutritionData.sodium,
-                        fat: existingFood.nutrition.fat + nutritionData.fat
+                        sodium: existingFood.nutrition.sodium + nutritionData.sodium
                     }
                 };
                 
@@ -128,7 +126,6 @@ export default function AddFood() {
                     Carbs: ${nutritionData.carbohydrates.toFixed(1)}g
                     Sugar: ${nutritionData.sugar.toFixed(1)}g
                     Sodium: ${nutritionData.sodium.toFixed(1)}g
-                    Fat: ${nutritionData.fat.toFixed(1)}g
                 `;
                 setMessages(prev => [
                     ...prev,

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './landing.tsx';
 import Home from './home.tsx'; // Import your Home component
