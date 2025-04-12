@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './home.css'; // Add styles for the grid layout
-
+import happy from './assests/happy.jpg'; // Adjust the path to your image
 interface SavedFood {
     food: string;
     quantity: string;
@@ -12,6 +12,7 @@ interface SavedFood {
         carbohydrates: number;
         sugar: number;
         sodium: number;
+        fats: number; // Optional field for fats
     };
 }
 
@@ -37,7 +38,7 @@ const Home: React.FC = () => {
             <div className="grid-contain">
                 {/* Profile Section */}
                 <div className="profile-box">
-                    <img src="/path/to/profile-picture.jpg" alt="Profile" className="profile-picture" />
+                    <img src={happy} alt="Profile" className="profile-picture" />
                     <div className="profile-glass">
                         <p>
                             <strong>Welcome User</strong>, Let's Win This Day
@@ -68,6 +69,7 @@ const Home: React.FC = () => {
                                         <li>Carbs: {food.nutrition.carbohydrates}g</li>
                                         <li>Sugar: {food.nutrition.sugar}g</li>
                                         <li>Sodium: {food.nutrition.sodium}mg</li>
+                                        <li>Fats: {food.nutrition.fats}g</li>
                                     </ul>
                                 </li>
                             ))}

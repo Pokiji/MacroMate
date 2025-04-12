@@ -6,6 +6,7 @@ interface NutritionData {
     carbohydrates: number;
     sugar: number;
     sodium: number;
+    fat: number
 }
 
 interface NutritionixResponse {
@@ -15,6 +16,7 @@ interface NutritionixResponse {
         nf_total_carbohydrate: number;
         nf_sugars: number;
         nf_sodium: number;
+        nf_total_fat: number;
     }[];
 }
 
@@ -38,7 +40,8 @@ export async function searchNutritionix(query: string, url: string): Promise<Nut
                 protein: food.nf_protein,
                 carbohydrates: food.nf_total_carbohydrate,
                 sugar: food.nf_sugars,
-                sodium: food.nf_sodium
+                sodium: food.nf_sodium,
+                fat: food.nf_total_fat
             };
         }
         return null;

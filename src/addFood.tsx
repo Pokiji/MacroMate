@@ -20,6 +20,7 @@ interface NutritionData {
     carbohydrates: number;
     sugar: number;
     sodium: number;
+    fat: number;
 }
 
 interface SavedFood {
@@ -71,7 +72,6 @@ export default function AddFood() {
     const handleSave = (nutritionData: NutritionData, foodDetails: { food: string; quantity: string; unit: string }, index: number) => {
         setSavedMessageIds(prev => [...prev, index]);
         setSavedFoods(prev => {
-            // Use the current state instead of getting from localStorage
             const existingFoodIndex = prev.findIndex(
                 (item: SavedFood) => 
                     item.food === foodDetails.food && 
@@ -79,7 +79,6 @@ export default function AddFood() {
             );
     
             if (existingFoodIndex !== -1) {
-                // Update existing food
                 const updatedFoods = [...prev];
                 const existingFood = updatedFoods[existingFoodIndex];
                 
@@ -91,14 +90,14 @@ export default function AddFood() {
                         protein: existingFood.nutrition.protein + nutritionData.protein,
                         carbohydrates: existingFood.nutrition.carbohydrates + nutritionData.carbohydrates,
                         sugar: existingFood.nutrition.sugar + nutritionData.sugar,
-                        sodium: existingFood.nutrition.sodium + nutritionData.sodium
+                        sodium: existingFood.nutrition.sodium + nutritionData.sodium,
+                        fat: existingFood.nutrition.fat + nutritionData.fat
                     }
                 };
                 
                 return updatedFoods;
             }
     
-            // Add new food to current state
             return [...prev, {
                 food: foodDetails.food,
                 quantity: foodDetails.quantity,
@@ -129,6 +128,7 @@ export default function AddFood() {
                     Carbs: ${nutritionData.carbohydrates.toFixed(1)}g
                     Sugar: ${nutritionData.sugar.toFixed(1)}g
                     Sodium: ${nutritionData.sodium.toFixed(1)}g
+                    Fat: ${nutritionData.fat.toFixed(1)}g
                 `;
                 setMessages(prev => [
                     ...prev,
