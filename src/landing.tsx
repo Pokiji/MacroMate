@@ -2,8 +2,8 @@ import './landing.css';
 import './assests/inter.css';
 import './assests/fontawesome.css';
 
-import phoneImg from './assests/phoneimg.png'; // adjust the path if needed
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import phoneImg from './assests/phoneimg.png';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function Landing() {
@@ -11,25 +11,30 @@ function Landing() {
     const [showInstallButton, setShowInstallButton] = useState(false);
 
     useEffect(() => {
-        // Listen for the beforeinstallprompt event
-        window.addEventListener('beforeinstallprompt', (e) => {
+        const handleBeforeInstallPrompt = (e: Event) => {
             e.preventDefault();
-            setDeferredPrompt(e);
-            setShowInstallButton(true); // Show the install button
-        });
+            setDeferredPrompt(e as any);
+            setShowInstallButton(true);
+        };
+
+        window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+        return () => {
+            window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+        };
     }, []);
 
     const handleInstallClick = () => {
         if (deferredPrompt) {
-            deferredPrompt.prompt(); // Show the install prompt
+            deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult: any) => {
                 if (choiceResult.outcome === 'accepted') {
                     console.log('User accepted the install prompt');
                 } else {
                     console.log('User dismissed the install prompt');
                 }
-                setDeferredPrompt(null); // Clear the deferred prompt
-                setShowInstallButton(false); // Hide the install button
+                setDeferredPrompt(null);
+                setShowInstallButton(false);
             });
         }
     };
@@ -38,7 +43,7 @@ function Landing() {
         <>
             <div className='main'>
                 <div className="header">
-                    <h1 className='name'>MacroMate </h1>
+                    <h1 className='name'>MacroMate</h1>
                 </div>
                 <div className="img">
                     <img src={phoneImg} alt="phonedemo" />
@@ -61,7 +66,7 @@ function Landing() {
                         className="install-button"
                         onClick={handleInstallClick}
                     >
-                        Install App
+                        Install App <i className="fa-solid fa-download"></i>
                     </button>
                 )}
             </div>
