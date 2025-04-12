@@ -45,6 +45,10 @@ export default function AddFood() {
         const storedMessages = localStorage.getItem('nutritionMessages');
         const storedMessageIds = localStorage.getItem('savedMessageIds');
         
+        console.log('Loaded savedFoods:', storedFoods);
+        console.log('Loaded messages:', storedMessages);
+        console.log('Loaded savedMessageIds:', storedMessageIds);
+
         if (storedFoods) {
             setSavedFoods(JSON.parse(storedFoods));
         }
