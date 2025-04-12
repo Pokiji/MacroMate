@@ -1,46 +1,44 @@
 {
-
-  "icons":[
-      {
-         "purpose":"maskable",
-         "sizes":"512x512",
-         "src":"icons/icon512_maskable.png",
-         "type":"image/png"
-      },
-      {
-         "purpose":"any",
-         "sizes":"512x512",
-         "src":"icons/icon512_rounded.png",
-         "type":"image/png"
-      }
+   "name": "MacroMate",
+   "short_name": "MacroMate",
+   "start_url": "/",
+   "scope": "/",
+   "id": "/",
+   "display": "standalone",
+   "orientation": "portrait",
+   "background_color": "#4f4f4f",
+   "theme_color": "#ededed",
+   "lang": "en-GB",
+   "description": "Macro tracker that tracks calories, protein, fat and carbs",
+ 
+   "icons": [
+     {
+       "src": "/icons/icon512_maskable.png",
+       "sizes": "512x512",
+       "type": "image/png",
+       "purpose": "maskable"
+     },
+     {
+       "src": "/icons/icon512_rounded.png",
+       "sizes": "512x512",
+       "type": "image/png",
+       "purpose": "any"
+     }
    ],
-
+ 
    "screenshots": [
-      {
-        "src": "ss/dSS.png",
-        "sizes": "2800x2400",
-        "type": "image/png",
-        "form_factor": "wide"
-      },
-      {
-        "src": "ss/mobileSS.png",
-        "sizes": "1290x2796",
-        "type": "image/png",
-        "form_factor": "narrow"
-      }
-    ],
-
-    "theme_color":"#ededed",
-    "background_color":"#4f4f4f",
-    
-    "orientation":"portrait",
-    "display":"standalone",
-    "dir":"auto",
-    "lang":"en-GB",
-    "name":"MacroMate",
-    "short_name":"MacroMate",
-    "start_url":"macromate.xyz",
-    "scope":"macromate.xyz",
-    "description":"Macro tracker that tracks calories, protien, fat and carbs",
-    "id":"macromate.xyz"
+     {
+       "src": "/ss/dSS.png",
+       "sizes": "2800x2400",
+       "type": "image/png",
+       "form_factor": "wide"
+     },
+     {
+       "src": "/ss/mobileSS.png",
+       "sizes": "1290x2796",
+       "type": "image/png",
+       "form_factor": "narrow"
+     }
+   ]
  }
+ 
