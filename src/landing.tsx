@@ -1,10 +1,12 @@
-import './landing.css'
-import './assests/inter.css'
-import './assests/fontawesome.css'
+import './landing.css';
+import './assests/inter.css';
+import './assests/fontawesome.css';
 
 import phoneImg from './assests/phoneimg.png'; // adjust the path if needed
-function Landing (){
-    return(
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+
+function Landing() {
+    return (
         <>
             <div className='main'>
                 <div className="header">
@@ -16,17 +18,19 @@ function Landing (){
                 <div className="textWrapper">
                     <h1 className='slogan'><i>Eat Smart Without the Math</i></h1>
                     <p className='subHeader'>
-                    Effortlessly track your calories, 
-                    stay on top of your nutrition goals, 
-                    and build healthier habits—one meal at a time.
+                        Effortlessly track your calories, 
+                        stay on top of your nutrition goals, 
+                        and build healthier habits—one meal at a time.
                     </p>
                 </div>
+                <Link to="/home">
                     <button className='button' type="button">
                         Get started <i className="fa-solid fa-arrow-right"></i>
                     </button>
+                </Link>
             </div>
         </>
-    )
+    );
 }
 
-export default Landing
+export default Landing;
