@@ -71,20 +71,16 @@ export default function AddFood() {
     const handleSave = (nutritionData: NutritionData, foodDetails: { food: string; quantity: string; unit: string }, index: number) => {
         setSavedMessageIds(prev => [...prev, index]);
         setSavedFoods(prev => {
-            // Get current stored foods from localStorage
-            const storedFoods = localStorage.getItem('savedFoods');
-            const currentFoods = storedFoods ? JSON.parse(storedFoods) : [];
-            
-            // Check if food already exists
-            const existingFoodIndex = currentFoods.findIndex(
+            // Use the current state instead of getting from localStorage
+            const existingFoodIndex = prev.findIndex(
                 (item: SavedFood) => 
                     item.food === foodDetails.food && 
                     item.unit === foodDetails.unit
             );
-
+    
             if (existingFoodIndex !== -1) {
                 // Update existing food
-                const updatedFoods = [...currentFoods];
+                const updatedFoods = [...prev];
                 const existingFood = updatedFoods[existingFoodIndex];
                 
                 updatedFoods[existingFoodIndex] = {
@@ -101,7 +97,8 @@ export default function AddFood() {
                 
                 return updatedFoods;
             }
-
+    
+            // Add new food to current state
             return [...prev, {
                 food: foodDetails.food,
                 quantity: foodDetails.quantity,
