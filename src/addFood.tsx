@@ -42,30 +42,49 @@ export default function AddFood() {
 
     useEffect(() => {
         const storedFoods = localStorage.getItem('savedFoods');
+        const storedMessages = localStorage.getItem('nutritionMessages');
+        const storedMessageIds = localStorage.getItem('savedMessageIds');
+        
         if (storedFoods) {
             setSavedFoods(JSON.parse(storedFoods));
         }
+        if (storedMessages) {
+            setMessages(JSON.parse(storedMessages));
+        }
+        if (storedMessageIds) {
+            setSavedMessageIds(JSON.parse(storedMessageIds));
+        }
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem('savedMessageIds', JSON.stringify(savedMessageIds));
+    }, [savedMessageIds]);
+
+    useEffect(() => {
+        localStorage.setItem('nutritionMessages', JSON.stringify(messages));
+    }, [messages]);
 
     useEffect(() => {
         localStorage.setItem('savedFoods', JSON.stringify(savedFoods));
     }, [savedFoods]);
 
-    const handleSave = (nutritionData: NutritionData, foodDetails: { food: string; quantity: string; unit: string }, messageIndex: number) => {
-        if (savedMessageIds.includes(messageIndex)) {
-            return;
-        }
-
-        setSavedMessageIds(prev => [...prev, messageIndex]);
-
+    const handleSave = (nutritionData: NutritionData, foodDetails: { food: string; quantity: string; unit: string }, index: number) => {
+        setSavedMessageIds(prev => [...prev, index]);
         setSavedFoods(prev => {
-            const existingFoodIndex = prev.findIndex(
-                item => item.food.toLowerCase() === foodDetails.food.toLowerCase() && 
-                       item.unit === foodDetails.unit
+            // Get current stored foods from localStorage
+            const storedFoods = localStorage.getItem('savedFoods');
+            const currentFoods = storedFoods ? JSON.parse(storedFoods) : [];
+            
+            // Check if food already exists
+            const existingFoodIndex = currentFoods.findIndex(
+                (item: SavedFood) => 
+                    item.food === foodDetails.food && 
+                    item.unit === foodDetails.unit
             );
 
             if (existingFoodIndex !== -1) {
-                const updatedFoods = [...prev];
+                // Update existing food
+                const updatedFoods = [...currentFoods];
                 const existingFood = updatedFoods[existingFoodIndex];
                 
                 updatedFoods[existingFoodIndex] = {
@@ -147,8 +166,8 @@ export default function AddFood() {
 
     return (
         <div className="container">
-            <button className="button" type="button" onClick={() => navigate('/home')}>
-                <h1>Return Home</h1>
+            <button className="returnbutton" type="button" onClick={() => navigate('/home')}>
+                <h1 className='returntext'>Return Home</h1>
             </button>
             <form onSubmit={handleSubmit} className="form">
                 <div className="form-group">

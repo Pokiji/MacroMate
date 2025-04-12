@@ -57,7 +57,23 @@
 .submit-button:hover {
   background-color: #E6A514; /* Shaded variant for hover */
 }
-
+.returnbutton {
+  padding: 8px 16px; /* Smaller padding */
+  background-color: #FFB618; /* Updated color */
+  color: white;
+  border: none;
+  border-radius: 4px; /* Slightly smaller rounded corners */
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.returntext {
+  font-size: 20px; /* Smaller font size for return text */
+  color: white  ; /* Darker color for better contrast */
+  margin-bottom: 10px; /* Added spacing below the text */
+}
+.returnbutton:hover {
+  background-color: #E6A514; /* Shaded variant for hover */
+}
 .messages-container {
   display: flex;
   flex-direction: column;

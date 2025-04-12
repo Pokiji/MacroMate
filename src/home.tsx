@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './home.css'; // Add styles for the saved foods box
+import './home.css'; // Add styles for the grid layout
 
 interface SavedFood {
     food: string;
@@ -26,22 +26,35 @@ const Home: React.FC = () => {
         }
     }, []);
 
+    // Calculate total nutrition values
+    const totalCalories = savedFoods.reduce((total, food) => total + food.nutrition.calories, 0);
+    const totalProtein = savedFoods.reduce((total, food) => total + food.nutrition.protein, 0);
+    const totalCarbs = savedFoods.reduce((total, food) => total + food.nutrition.carbohydrates, 0);
+    const totalFats = savedFoods.reduce((total, food) => total + (food.nutrition.fats || 0), 0); // Assuming fats might be missing
+
     return (
         <div className="main">
             <div className="grid-contain">
-                <div className="info">
-                    <h1 className="slogan">Welcome to MacroMate</h1>
-                    <p className="subHeader">
-                        Effortlessly track your calories, stay on top of your nutrition goals, and build healthier habits—one meal at a time.
-                    </p>
+                {/* Profile Section */}
+                <div className="profile-box">
+                    <img src="/path/to/profile-picture.jpg" alt="Profile" className="profile-picture" />
+                    <div className="profile-glass">
+                        <p>
+                            <strong>Welcome User</strong>, Let's Win This Day
+                        </p>
+                    </div>
                 </div>
-                <div className="addfood">
-                    <Link to="/addfood">
-                        <button className="button" type="button">
-                            Add Food
-                        </button>
-                    </Link>
+
+                {/* Total Nutrition */}
+                <div className="total-kcal">
+                    <h2>Total Nutrition</h2>
+                    <p>Calories: {totalCalories} kcal</p>
+                    <p>Protein: {totalProtein} g</p>
+                    <p>Carbs: {totalCarbs} g</p>
+                    <p>Fats: {totalFats} g</p>
                 </div>
+
+                {/* Saved Foods */}
                 <div className="saved-foods-box">
                     <h2>Saved Foods</h2>
                     {savedFoods.length > 0 ? (
@@ -62,6 +75,19 @@ const Home: React.FC = () => {
                     ) : (
                         <p>No foods saved yet. Add some from the Add Food page!</p>
                     )}
+                </div>
+
+                {/* Info Section */}
+                <div className="info">
+                    <h1 className="slogan">Welcome to MacroMate</h1>
+                    <p className="subHeader">
+                        Effortlessly track your calories, stay on top of your nutrition goals, and build healthier habits—one meal at a time.
+                    </p>
+                    <Link to="/addfood">
+                        <button className="button" type="button">
+                            Add Food
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
