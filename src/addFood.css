@@ -78,7 +78,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px; /* Increased gap between messages */
-  max-height: 600px;
+  max-height: 300px;
   overflow-y: auto;
   width: 100%;
   max-width: 500px;

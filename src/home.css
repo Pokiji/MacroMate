@@ -1,30 +1,4 @@
-.saved-foods-box {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    width: 100%;
-}
-
-.saved-foods-box h2 {
-    margin-bottom: 10px;
-    font-size: 24px;
-    color: #333;
-}
-
-.saved-foods-box ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.saved-foods-box li {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #555;
-}
-
+/* Base grid layout for larger screens */
 .grid-contain {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 2 columns */
@@ -78,77 +52,7 @@
     }
 }
 
-.profile {
-    grid-area: 1 / 1; /* First row, first column */
-    text-align: center;
-}
-
-.profile-picture {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%; /* Circular profile picture */
-    margin-bottom: 10px;
-}
-
-.total-kcal {
-    grid-area: 1 / 2; /* First row, second column */
-    text-align: center;
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.saved-foods-box {
-    grid-area: 2 / 1; /* Second row, first column */
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow-y: scroll;
-    max-height: 300px; /* Limit height for scrolling */
-}
-
-.info {
-    grid-area: 2 / 2; /* Second row, second column */
-    text-align: center;
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #ffb618;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.2s;
-}
-
-.button:hover {
-    background-color: #e6a514;
-}
-
-.total-kcal {
-    grid-area: 1 / 2; /* First row, second column */
-    text-align: center;
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.total-kcal p {
-    margin: 5px 0;
-    font-size: 16px;
-    color: #333;
-}
-
+/* Profile Box */
 .profile-box {
     grid-area: 1 / 1; /* First row, first column */
     position: relative;
@@ -192,4 +96,58 @@
 
 .profile-glass strong {
     font-weight: bold; /* Bold text for "Welcome User" */
+}
+
+/* Total Nutrition Section */
+.total-kcal {
+    grid-area: 1 / 2; /* First row, second column */
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.total-kcal p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Saved Foods Section */
+.saved-foods-box {
+    grid-area: 2 / 1; /* Second row, first column */
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    max-height: 300px; /* Limit height for scrolling */
+}
+
+/* Info Section */
+.info {
+    grid-area: 2 / 2; /* Second row, second column */
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ffb618;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.button:hover {
+    background-color: #e6a514;
 }

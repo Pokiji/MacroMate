@@ -31,6 +31,8 @@ const Home: React.FC = () => {
     const totalCalories = savedFoods.reduce((total, food) => total + food.nutrition.calories, 0);
     const totalProtein = savedFoods.reduce((total, food) => total + food.nutrition.protein, 0);
     const totalCarbs = savedFoods.reduce((total, food) => total + food.nutrition.carbohydrates, 0);
+    const totalSugar = savedFoods.reduce((total, food) => total + food.nutrition.sugar, 0);
+    const totalSodium = savedFoods.reduce((total, food) => total + food.nutrition.sodium, 0);
     const totalFats = savedFoods.reduce((total, food) => total + food.nutrition.fat, 0); // Assuming fats might be missing
 
     return (
@@ -52,6 +54,8 @@ const Home: React.FC = () => {
                     <p>Calories: {totalCalories} kcal</p>
                     <p>Protein: {totalProtein} g</p>
                     <p>Carbs: {totalCarbs} g</p>
+                    <p>Sugar: {totalSugar} g</p>
+                    <p>Sodium: {totalSodium} g</p>
                     <p>Fats: {totalFats} g</p>
                 </div>
 
