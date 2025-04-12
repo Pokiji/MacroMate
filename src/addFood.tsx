@@ -38,6 +38,7 @@ export default function AddFood() {
     const [savedFoods, setSavedFoods] = useState<SavedFood[]>([]);
     const [isSearching, setIsSearching] = useState(false);
     const [savedMessageIds, setSavedMessageIds] = useState<number[]>([]);
+    const [isMultiSearch, setIsMultiSearch] = useState(false); // New state for multi-search mode
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -117,41 +118,47 @@ export default function AddFood() {
         }
 
         setIsSearching(true);
-        const query = `${quantity} ${unit} ${food}`;
-        setMessages(prev => [...prev, { type: 'user', content: query }]);
+
+        // Handle multi-food search
+        const foods = isMultiSearch ? food.split(',').map(f => f.trim()) : [food];
+        const queries = foods.map(f => `${quantity} ${unit} ${f}`);
 
         try {
-            const nutritionData = await searchNutritionix(query, 'https://trackapi.nutritionix.com/v2/natural/nutrients');
-            
-            if (nutritionData) {
-                const response = `
-                    Calories: ${nutritionData.calories.toFixed(1)}
-                    Protein: ${nutritionData.protein.toFixed(1)}g
-                    Carbs: ${nutritionData.carbohydrates.toFixed(1)}g
-                    Sugar: ${nutritionData.sugar.toFixed(1)}g
-                    Sodium: ${nutritionData.sodium.toFixed(1)}g
-                `;
-                setMessages(prev => [
-                    ...prev,
-                    {
-                        type: 'response',
-                        content: response,
-                        nutritionData,
-                        foodDetails: {
-                            food,
-                            quantity,
-                            unit,
+            for (const query of queries) {
+                setMessages(prev => [...prev, { type: 'user', content: query }]);
+
+                const nutritionData = await searchNutritionix(query, 'https://trackapi.nutritionix.com/v2/natural/nutrients');
+
+                if (nutritionData) {
+                    const response = `
+                        Calories: ${nutritionData.calories.toFixed(1)}
+                        Protein: ${nutritionData.protein.toFixed(1)}g
+                        Carbs: ${nutritionData.carbohydrates.toFixed(1)}g
+                        Sugar: ${nutritionData.sugar.toFixed(1)}g
+                        Sodium: ${nutritionData.sodium.toFixed(1)}g
+                    `;
+                    setMessages(prev => [
+                        ...prev,
+                        {
+                            type: 'response',
+                            content: response,
+                            nutritionData,
+                            foodDetails: {
+                                food: query,
+                                quantity,
+                                unit,
+                            },
                         },
-                    },
-                ]);
-            } else {
-                setMessages(prev => [
-                    ...prev,
-                    {
-                        type: 'response',
-                        content: "Sorry, I couldn't find nutrition information for that food.",
-                    },
-                ]);
+                    ]);
+                } else {
+                    setMessages(prev => [
+                        ...prev,
+                        {
+                            type: 'response',
+                            content: `Sorry, I couldn't find nutrition information for "${query}".`,
+                        },
+                    ]);
+                }
             }
         } finally {
             setIsSearching(false);
@@ -167,6 +174,16 @@ export default function AddFood() {
             <button className="returnbutton" type="button" onClick={() => navigate('/home')}>
                 <h1 className='returntext'>Return Home</h1>
             </button>
+            <div className="toggle-container">
+                <button
+                    type="button"
+                    className="toggle-button"
+                    onClick={() => setIsMultiSearch(prev => !prev)}
+                >
+                    {isMultiSearch ? 'Switch to Single Search' : 'Switch to Multi Search'}
+                </button>
+                <p>{isMultiSearch ? 'Enter multiple foods separated by commas.' : 'Search for one food at a time.'}</p>
+            </div>
             <form onSubmit={handleSubmit} className="form">
                 <div className="form-group">
                     <input
